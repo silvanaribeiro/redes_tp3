@@ -1,0 +1,7 @@
+Servidor: 
+- Enviar mensagem para interessados
+- Confirmar para cliente mensagens + e -
+
+Cliente:
+- Select para controlar i/o + sockect
+- Imprimir mensagem # que receber
