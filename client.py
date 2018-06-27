@@ -11,10 +11,11 @@ def main(argv):
 	PORT = None
 	LOCAL_PORT = None
 	# Deve receber os 3 parametros para iniciar conexao
-	if len(argv) == 3:
+	if len(argv) >= 3:
 		LOCAL_PORT = argv[0]
 		HOST = argv[1] # Endereco IP do Servidor 
 		PORT = argv[2] # Porta em que o Servidor esta
+		TEXT = argv[3] # Teste no windows
 		server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		server.bind(('',int(LOCAL_PORT)))
 		#input = [server,sys.stdin] #SO FUNCIONA NO LINUX, MAS EH O QUE DEVE SER MANDADO PRA CORRECAO
