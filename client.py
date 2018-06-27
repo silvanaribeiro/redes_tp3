@@ -17,11 +17,11 @@ def main(argv):
 		PORT = argv[2] # Porta em que o Servidor esta
 		TEXT = argv[3] # Teste no windows
 		server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-		server.bind(('',int(LOCAL_PORT)))
+		server.bind(('',int(LOCAL_PORT))) 
 		#input = [server,sys.stdin] #SO FUNCIONA NO LINUX, MAS EH O QUE DEVE SER MANDADO PRA CORRECAO
 		input = [server]
 		running = 1
-		print("vai entrar running")
+		send_message(HOST, PORT, TEXT)
 		while running:
 			inputready,outputready,exceptready = select.select(input,[],[])
 			print("entrou running")
@@ -29,7 +29,6 @@ def main(argv):
 				print("entrou for")
 			#for s in inputready: # PARA LINUX
 				if s == server:
-					print("entrou server")
 					# handle the server socket
 					client, address = server.accept()
 					input.append(client)
@@ -42,7 +41,8 @@ def main(argv):
 				else:
 					# handle all other sockets
 					print("entrou outros sockets")
-					data = s.recv(size)
+					data = s.recv(size).decode('ascii')
+					print(data)
 					if data:
 						s.send(data)
 					else:
@@ -54,7 +54,7 @@ def send_message(HOST, PORT, message):
 	udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	dest = (HOST, int(PORT))
 
-	udp.sendto(message.encode('utf-8'), dest)
+	udp.sendto(message.encode('ascii'), dest)
 	udp.close()		
 
 if __name__ == "__main__":

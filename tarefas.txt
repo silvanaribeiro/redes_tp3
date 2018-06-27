@@ -1,7 +1,6 @@
 Servidor: 
-- Enviar mensagem para interessados
-- Confirmar para cliente mensagens + e -
+- Enviar mensagem para interessados S --> OK
 
 Cliente:
-- Select para controlar i/o + sockect
+- Select para controlar i/o + socket 
 - Imprimir mensagem # que receber
